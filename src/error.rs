@@ -18,10 +18,10 @@ impl From<CrowdfundingError> for StdError {
             CrowdfundingError::InvalidFundsAmount => StdError::generic_err("Invalid funds amount"),
             CrowdfundingError::SerializationError(err) => {
                 StdError::generic_err(format!("Serialization error: {}", err))
-            },
+            }
             CrowdfundingError::DeserializationError(err) => {
                 StdError::generic_err(format!("Deserialization error: {}", err))
-            },
+            }
         }
     }
 }

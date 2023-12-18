@@ -1,6 +1,12 @@
-use cosmwasm_std::{testing::{mock_dependencies, mock_env, mock_info}, Empty};
+use cosmwasm_std::{
+    testing::{mock_dependencies, mock_env, mock_info},
+    Empty,
+};
 
-use crate::{contract::{instantiate, ExecuteMsg, execute, QueryMsg, query}, project::Project};
+use crate::{
+    contract::{execute, instantiate, query, ExecuteMsg, QueryMsg},
+    project::Project,
+};
 
 #[test]
 fn test_list_projects() {

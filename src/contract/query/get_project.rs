@@ -7,7 +7,7 @@ pub fn get_project(deps: Deps, project_id: String) -> StdResult<Binary> {
     match projects.get(&project_id) {
         Some(project) => Ok(Binary::from(
             serde_json::to_string(&project)
-                .map_err(|err| CrowdfundingError::SerializationError(err))?
+                .map_err(CrowdfundingError::SerializationError)?
                 .as_bytes(),
         )),
         None => Err(CrowdfundingError::ProjectNotFound.into()),

@@ -1,6 +1,12 @@
-use cosmwasm_std::{testing::{mock_dependencies, mock_env, mock_info}, Empty};
+use cosmwasm_std::{
+    testing::{mock_dependencies, mock_env, mock_info},
+    Empty,
+};
 
-use crate::{contract::{instantiate, ExecuteMsg, execute, query, QueryMsg}, project::Project};
+use crate::{
+    contract::{execute, instantiate, query, ExecuteMsg, QueryMsg},
+    project::Project,
+};
 
 #[test]
 fn test_get_project() {
@@ -28,8 +34,15 @@ fn test_get_project() {
     .unwrap();
     let project_id = res.attributes[1].value.clone();
 
-    let res = query(deps.as_ref(), env.clone(), QueryMsg::GetProject { project_id: project_id.clone() }).unwrap();
-    let project = Project::from_slice(&res).unwrap();
+    let res = query(
+        deps.as_ref(),
+        env.clone(),
+        QueryMsg::GetProject {
+            project_id: project_id.clone(),
+        },
+    )
+    .unwrap();
+    let project = serde_json::from_slice::<Project>(&res).unwrap();
     dbg!(&project);
 
     assert_eq!(project_id, project.id);

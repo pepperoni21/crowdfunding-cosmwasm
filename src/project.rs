@@ -1,7 +1,5 @@
-use cosmwasm_std::{Addr, Timestamp, StdError};
+use cosmwasm_std::{Addr, Timestamp};
 use serde::{Deserialize, Serialize};
-
-use crate::error::CrowdfundingError;
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct Project {
@@ -37,11 +35,6 @@ impl Project {
             funding_goal,
             coin,
         }
-    }
-
-    pub fn from_slice(bytes: &[u8]) -> Result<Self, StdError> {
-        let project = serde_json::from_slice(bytes).map_err(|err| CrowdfundingError::DeserializationError(err))?;
-        Ok(project)
     }
 
     pub fn add_history_item(&mut self, funding: u128, funder: Addr, date: Timestamp) {
