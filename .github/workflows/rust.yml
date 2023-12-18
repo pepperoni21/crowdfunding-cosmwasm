@@ -22,9 +22,6 @@ jobs:
         with:
           toolchain: "stable"
           components: "rustfmt,clippy"
-
-      - name: Add wasm target
-        run: rustup target add wasm32-unknown-unknown
           
       - name: cargo fmt
         run: cargo fmt --all -- --check
@@ -46,6 +43,7 @@ jobs:
         uses: actions-rust-lang/setup-rust-toolchain@v1.5.0
         with:
           toolchain: "stable"
+          target: "wasm32-unknown-unknown"
           
       - name: Build
         run: cargo wasm --verbose
