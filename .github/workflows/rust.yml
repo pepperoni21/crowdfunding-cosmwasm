@@ -47,3 +47,6 @@ jobs:
           
       - name: Build
         run: cargo wasm --verbose
+
+      - name: Test
+        run: cargo test --verbose
