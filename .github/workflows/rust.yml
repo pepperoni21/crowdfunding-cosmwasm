@@ -22,7 +22,9 @@ jobs:
         with:
           toolchain: "stable"
           components: "rustfmt,clippy"
-          target: "wasm32-unknown-unknown"
+
+      - name: Add wasm target
+        run: rustup target add wasm32-unknown-unknown
           
       - name: cargo fmt
         run: cargo fmt --all -- --check
