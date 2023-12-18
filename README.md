@@ -6,3 +6,5 @@
 - Fund projects
 - Query a specific project
 - Query the project list
+
+### TODO: A frontend app
